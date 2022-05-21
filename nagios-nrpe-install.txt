@@ -1,0 +1,55 @@
+    1  clear
+    2  sudo useradd nagios
+    3  sudo deluser nagios
+    4  sudo adduser nagios
+    5  sudo groupadd nagcmd
+    6  sudo usermod -a -G nagcmd nagios
+    7  sudo usermod -a -G nagcmd www-data
+    8  cd /tmp
+    9  wget https://assets.nagios.com/downloads/nagioscore/releases/nagios-4.4.5.tar.gz
+   10  tar -zxvf /tmp/nagios-4.4.5.tar.gz
+   11  cd /tmp/nagios-4.4.5/
+   12  sudo ./configure --with-nagios-group=nagios
+   13  --with-command-group=nagcmd --with-httpd_conf=/etc/apache2/sites-enabled/
+   14  sudo ./configure --with-nagios-group=nagios
+   15  --with-command-group=nagcmd --with-httpd_conf=/etc/apache2/sites-enabled/
+   16  sudo make all
+   17  sudo ./configure --with-nagios-group=nagios
+   18  --with-command-group=nagcmd --with-httpd_conf=/etc/apache2/sites-enabled/
+   19  sudo ./configure --with-nagios-group=nagios
+   20  --with-command-group=nagcmd --with-httpd_conf=/etc/apache2/sites-enabled/
+   21  sudo ./configure --with-nagios-group=nagios --with-command-group=nagcmd --with-httpd_conf=/etc/apache2/sites-enabled/
+   22  cat config.log
+   23  clear
+   24  sudo apt install apache2
+   25  a2enmod auth_digest
+   26  sudo a2enmod auth_digest
+   27  sudo su -
+   28  sudo apt install nagios4 nagios-nrpe-plugin nagios-plugins-contrib
+   29  cd
+   30  sudo su
+   31  history
+
+    1  systemctl restart apache2
+    2  exit
+    3  cd
+    4  cd /etc/apache2
+    5  ls
+    6  cd conf-enabled
+    7  ls
+    8  nano nagios4-cgi.conf
+    9  vi nagios4-cgi.conf
+   10  clear
+   11  cd /etc/nagios4
+   12  ls
+   13  vi cgi.cfg
+   14  systemctl restart apache2
+   15  systemctl restart nagios4
+   16  sudo apt install nettools
+   17  sudo apt install net-tools
+   18  ifconfig
+   19  exit
+   20  history
+   21  nagios4 --version
+
+

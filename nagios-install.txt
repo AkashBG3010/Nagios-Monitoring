@@ -1,0 +1,37 @@
+    1  sudo apt-get update
+    2  sudo apt update
+    3  sudo apt-get upgrade
+    4  sudo apt upgrade
+    5  sudo apt autoremove
+    6  clear
+    7  sudo apt-get install -y autoconf gcc libc6 make wget unzip apache2 php libapache2-mod-php7.4 libgd-dev
+    8  sudo apt-get install openssl libssl-dev
+    9  cd /tmp
+   10  wget -O nagioscore.tar.gz https://github.com/NagiosEnterprises/nagioscore/archive/nagios-4.4.7.tar.gz
+   11  tar xzf nagioscore.tar.gz
+   12  cd /tmp/nagioscore-nagios-4.4.7/
+   13  sudo ./configure --with-httpd-conf=/etc/apache2/sites-enabled
+   14  sudo make all
+   15  sudo make install-groups-users
+   16  sudo usermod -a -G nagios www-data
+   17  sudo make install
+   18  sudo make install-daemoninit
+   19  sudo make install-commandmode
+   20  sudo make install-config
+   21  sudo a2enmod rewrite
+   22  sudo a2enmod cgi
+   23  sudo ufw allow Apache
+   24  sudo ufw reload
+   25  sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+   26  sudo service apache2 restart
+   27  sudo systemctl restart apache2.service
+   28  sudo systemctl start nagios.service
+   29  sudo apt-get install -y autoconf gcc libc6 libmcrypt-dev make libssl-dev wget bc gawk dc build-essential snmp libnet-snmp-perl gettext
+   30  cd /tmp
+   31  wget --no-check-certificate -O nagios-plugins.tar.gz https://github.com/nagios-plugins/nagios-plugins/archive/release-2.3.3.tar.gz
+   32  tar zxf nagios-plugins.tar.gz
+   33  cd /tmp/nagios-plugins-release-2.3.3/
+   34  sudo ./tools/setup
+   35  sudo ./configure
+   36  sudo make
+   37  sudo make install

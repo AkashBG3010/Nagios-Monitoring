@@ -1,0 +1,47 @@
+   44  sudo apt-get update
+   45  sudo apt update
+   46  sudo apt-get upgrade
+   47  sudo apt upgrade
+    1  sudo reboot
+    2  clear
+    3  sudo apt install autoconf gcc libmcrypt-dev make libssl-dev dc build-essential gettext
+    4  cd /tmp
+    5  wget -O Nagios-plugins.tar.gz https://github.com/nagios-plugins/nagios-plugins/releases/download/release-2.3.3/nagios-plugins-2.3.3.tar.gz
+    6  tar -zxf nagios-plugins.tar.gz
+    7  tar -zxf Nagios-plugins.tar.gz
+    8  cd nagios-plugins-2.3.3//
+    9  sudo ./configure
+   10  sudo make
+   11  sudo make install
+   12  sudo apt update
+   13  sudo apt autoremove
+   14  sudo apt install -y autoconf automake gcc libc6 libmcrypt-dev make libssl-dev
+   15  cd /tmp
+   16  wget -O nrpe.tar.gz https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-4.0.3/nrpe-4.0.3.tar.gz
+   17  tar xzf nrpe.tar.gz
+   18  sudo ./configure --enable-command-args
+   19  ls
+   20  cd nrpe-4.0.3/
+   21  sudo ./configure --enable-command-args
+   22  sudo make all
+   23  make install-groups-users
+   24  sudo make all
+   25  make install-groups-users
+   26  sudo make install-groups-users
+   27  sudo make install
+   28  sudo make install-config
+   29  sudo make install-init
+   30  sudo ufw allow 5666/tcp
+   31  sudo nano /usr/local/nagios/etc/nrpe.cfg
+   32  history
+   33  sudo service nrpe restart
+   34  sudo service nrpe status
+   35  sudo systemctl status nrpe.service
+   36  sudo nano /usr/local/nagios/etc/nrpe.cfg
+   37  /check_http  -I 172.31.8.123
+   38  sudo service nrpe restart
+   39  sudo service nrpe status
+
+
+
+

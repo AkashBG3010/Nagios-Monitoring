@@ -1,0 +1,24 @@
+    1  sudo hostnamectl set-hostname nagios-monitor
+    2  exit
+    3  sudo apt-get update
+    4  sudo apt update
+    5  sudo apt-get upgrade
+    6  sudo apt upgrade
+    7  clear
+    8  sudo reboot
+    9  sudo hostnamectl set-hostname nagios-client
+   10  exit
+   11  clear
+   12  sudo apt install nagios-nrpe-server nagios-plugins -y
+   13  clear
+   14  sudo vim /etc/nagios/nrpe.cfg
+   15  sudo systemctl restart nagios-nrpe-server
+   16  sudo systemctl enable nagios-nrpe-server
+   17  sudo ufw status
+   18  sudo ufw enable
+   19  sudo ufw allow 5666/tcp
+   20  sudo ufw status
+   21  sudo ufw allow ssh
+   22  sudo ufw status
+   23  clear
+   24  history

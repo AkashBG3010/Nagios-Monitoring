@@ -1,0 +1,61 @@
+    1  export RELEASE="2.2.1"
+    2  sudo useradd --no-create-home --shell /bin/false prometheus
+    3  sudo useradd --no-create-home --shell /bin/false node_exporter
+    4  sudo mkdir /etc/prometheus
+    5  sudo mkdir /var/lib/prometheus
+    6  sudo chown prometheus:prometheus /etc/prometheus
+    7  sudo chown prometheus:prometheus /var/lib/prometheus
+    8  cd /opt/
+    9  wget https://github.com/prometheus/prometheus/releases/download/v2.26.0/prometheus-2.26.0.linux-amd64.tar.gz
+   10  sha256sum prometheus-2.26.0.linux-amd64.tar.gz
+   11  tar -xvf prometheus-2.26.0.linux-amd64.tar.gz
+   12  cd prometheus-2.26.0.linux-amd64
+   13  ls
+   14  sudo cp /opt/prometheus-2.26.0.linux-amd64/prometheus /usr/local/bin/
+   15  sudo cp /opt/prometheus-2.26.0.linux-amd64/promtool /usr/local/bin/
+   16  sudo chown prometheus:prometheus /usr/local/bin/prometheus
+   17  sudo chown prometheus:prometheus /usr/local/bin/promtool
+   18  sudo cp -r /opt/prometheus-2.26.0.linux-amd64/consoles /etc/prometheus
+   19  sudo cp -r /opt/prometheus-2.26.0.linux-amd64/console_libraries /etc/prometheus
+   20  sudo cp -r /opt/prometheus-2.26.0.linux-amd64/prometheus.yml /etc/prometheus
+   21  sudo chown -R prometheus:prometheus /etc/prometheus/consoles
+   22  sudo chown -R prometheus:prometheus /etc/prometheus/console_libraries
+   23  sudo chown -R prometheus:prometheus /etc/prometheus/prometheus.yml
+   24  prometheus --version
+   25  promtool --version
+   26  cat /etc/prometheus/prometheus.yml
+   27  sudo -u prometheus /usr/local/bin/prometheus         --config.file /etc/prometheus/prometheus.yml         --storage.tsdb.path /var/lib/prometheus/         --web.console.templates=/etc/prometheus/consoles         --web.console.libraries=/etc/prometheus/console_libraries
+   28  sudo -u prometheus /usr/local/bin/prometheus         --config.file /etc/prometheus/prometheus.yml         --storage.tsdb.path /var/lib/prometheus/         --web.console.templates=/etc/prometheus/consoles         --web.console.libraries=/etc/prometheus/console_libraries
+   29  history
+
+
+    1  clear
+    2  sudo nano /etc/systemd/system/prometheus.service
+    3  sudo systemctl daemon-reload
+    4  sudo systemctl start prometheus
+    5  sudo systemctl enable prometheus
+    6  sudo systemctl status prometheus
+    7  sudo ufw allow 9090/tcp
+    8  sudo systemctl start prometheus
+    9  sudo systemctl status prometheus
+   10  cd /opt
+   11  wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add –
+   12  wget -q -O - https://packages.grafana.com/gpg.key | sudo apt -key add –
+   13  wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-get add –
+   14  wget -q -O - https://packages.grafana.com/gpg.key | sudo apt key add –
+   15  sudo apt-get install wget
+   16  wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+   17  echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+   18  sudo apt-get update
+   19  sudo apt update
+   20  sudo apt-get update
+   21  sudo apt-get install grafana
+   22  sudo apt-get install grafana
+   23  sudo apt install grafana
+   24  sudo apt install grafana
+   25  sudo systemctl start grafana-server
+   26  sudo systemctl start grafana-server
+   27  sudo systemctl status grafana-server
+   28  sudo systemctl enable grafana-server.service
+   29  sudo systemctl enable grafana-server.service
+   30  history

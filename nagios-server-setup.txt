@@ -1,0 +1,72 @@
+   44  sudo apt-get update
+   45  sudo apt update
+   46  sudo apt-get upgrade
+   47  sudo apt upgrade 
+    1  sudo reboot
+    2  clear
+    3  sudo apt install -y autoconf gcc libc6 make wget unzip apache2 php libapache2-mod-php7.4 libgd-dev openssl libssl-dev
+    4  cd /tmp
+    5  wget -O nagios.tar.gz https://github.com/NagiosEnterprises/nagioscore/archive/nagios-4.4.6.tar.gz
+    6  tar -xzf nagios.tar.gz
+    7  cd nagioscore-nagios-4.4.6/
+    8  ./configure --with-httpd-conf=/etc/apache2/sites-enabled
+    9  make all
+   10  sudo make install-groups-users
+   11  sudo usermod -a -G nagios www-data
+   12  sudo make install
+   13  sudo make install-daemoninit
+   14  sudo make install-commandmode
+   15  sudo make install-config
+   16  sudo make install-webconf
+   17  sudo a2enmod rewrite
+   18  sudo a2enmod cgi
+   19  sudo htpasswd -c /usr/local/nagios/etc/htpasswd.users nagiosadmin
+   20  sudo systemctl restart apache2
+   21  cd /tmp
+   22  wget -O Nagios-plugins.tar.gz https://github.com/nagios-plugins/nagios-plugins/releases/download/release-2.3.3/nagios-plugins-2.3.3.tar.gz
+   23  tar zxf Nagios-plugins.tar.gz
+   24  cd nagios-plugins-2.3.3/
+   25  sudo ./configure
+   26  sudo make
+   27  sudo make install
+   28  cd /tmp
+   29  wget -O Nagios-nrpe.tar.gz https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-4.0.3/nrpe-4.0.3.tar.gz
+   30  tar -xzf Nagios-nrpe.tar.gz
+   31  cd nrpe-4.0.3/
+   32  sudo ./configure
+   33  sudo make check_nrpe
+   34  sudo make install-plugin
+   35  sudo nano /usr/local/nagios/etc/nagios.cfg
+   36  cd
+   37  sudo mkdir /usr/local/nagios/etc/servers
+   38  sudo nano /usr/local/nagios/etc/objects/contacts.cfg
+   39  sudo nano /usr/local/nagios/etc/objects/commands.cfg
+   40  sudo systemctl start Nagios.service
+   41  sudo systemctl start nagios.service
+   42  sudo apt autoremove
+   43  sudo apt-get autoremove
+   44  sudo apt-get update
+   45  sudo apt update
+   46  sudo apt-get upgrade
+   47  sudo apt upgrade
+   48  sudo apt-get autoremove
+   49  sudo apt autoremove
+   50  /usr/local/nagios/libexec/check_nrpe -H 44.192.62.126
+   51  sudo systemctl start nrpe.service
+   52  /usr/local/nagios/libexec/check_nrpe -H 44.192.62.126
+   53  history 54  sudo service nagios-nrpe-server restart
+   55  /usr/local/nagios/libexec/check_nrpe -H 44.192.62.126
+   56  /usr/local/nagios/libexec/check_nrpe -H 172.31.8.123
+   57  sudo nano /usr/local/nagios/etc/servers/client.cfg
+   58  sudo systemctl restart Nagios
+   59  sudo systemctl restart nagios
+   60  journalctl -xe
+   61  sudo nano /usr/local/nagios/etc/servers/client.cfg
+   62  sudo systemctl restart nagios
+   63  journalctl -xe
+   64  sudo nano /usr/local/nagios/etc/servers/client.cfg
+   65  nano /usr/local/nagios/etc/nagios.cfg
+   66  sudo systemctl restart nagios
+   67  sudo systemctl status nagios
+
+   
